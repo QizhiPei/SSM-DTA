@@ -25,7 +25,7 @@ cp -r -n /tmp/fairseq/* ./
 conda create -n fairseq-dti python=3.7
 conda activate fairseq-dti
 conda install -c conda-forge rdkit
-pip install future scipy sklearn
+pip install future scipy sklearn lifelines requests
 pip install -e . 
 ```
 # Getting Started
@@ -69,10 +69,6 @@ fairseq-preprocess \
     --destdir $DATA_BIN/protein \
     --workers 40 \
     --srcdict preprocess/dict.pro.txt
-
-# Copy dict to DATA_BIN for evaluation
-cp $DATADIR/dict.mol.txt $DATA_BIN
-cp $DATADIR/dict.pro.txt $DATA_BIN
 ```
 #### Paired DTI data
 
@@ -92,7 +88,7 @@ python preprocess/tokenize_re.py $DATADIR/train.mol.can --workers 40 \
 python preprocess/add_space.py $DATADIR/train.pro --workers 40 \
   --output-fn $DATADIR/train.pro.addspace
 
-# You should also canonicalize and tokenize the valid set in the same way.
+# You should also process the valid set and test set in the same way.
 
 # Binarize the data
 fairseq-preprocess \
@@ -129,6 +125,7 @@ PEAK_LR=0.00005       # Peak learning rate, adjust as needed
 BATCH_SIZE=4		# Batch size
 UPDATE_FREQ=4       # Increase the batch size 4x
 
+mkdir -p $SAVE_PATH
 
 python $FAIRSEQ/train.py --task dti_separate $DATA_BIN \
     --num-classes 1 --init-token 0 \
@@ -138,7 +135,7 @@ python $FAIRSEQ/train.py --task dti_separate $DATA_BIN \
     --criterion dti_separate --regression-target \
     --batch-size $BATCH_SIZE --update-freq $UPDATE_FREQ --required-batch-size-multiple 1 \
     --optimizer adam --weight-decay 0.1 --adam-betas '(0.9,0.98)' --adam-eps 1e-06 \
-    --lr-scheduler polynomial_decay --lr $PEAK_LR --warmup-updates $WARMUP_UPDATAE --total-num-update $TOTAL_UPDATES \
+    --lr-scheduler polynomial_decay --lr $PEAK_LR --warmup-updates $WARMUP_UPDATES --total-num-update $TOTAL_UPDATES \
     --clip-norm 1.0  --max-update $TOTAL_UPDATES \
     --arch roberta_dti_separate_encoder --dropout 0.1 --attention-dropout 0.1 \
     --skip-invalid-size-inputs-valid-test \
@@ -153,6 +150,7 @@ python $FAIRSEQ/train.py --task dti_separate $DATA_BIN \
 
 ```shell
 DATA_BIN=/yourDataBinDir
+DTI_DATASET=bindingdb(davis or kiba)
 FAIRSEQ=$pwd
 SAVE_PATH=/yourCkptDir
 TOTAL_UPDATES=200000 # Total number of training steps
@@ -163,7 +161,10 @@ BATCH_SIZE=4		# Batch size
 UPDATE_FREQ=8       # Increase the batch size 8x
 MLMW=2 				# MLM loss weight
 
+mkdir -p $SAVE_PATH
+
 python $FAIRSEQ/train.py --task dti_mlm_regress_pretrain $DATA_BIN \
+	--dti-dataset $DTI_DATASET \
     --num-classes 1 --init-token 0 \
     --max-positions-molecule 512 --max-positions-protein 1024 \
     --save-dir $SAVE_PATH \
@@ -186,10 +187,14 @@ python $FAIRSEQ/train.py --task dti_mlm_regress_pretrain $DATA_BIN \
 ## Evaluation
 
 ```shell
+# Copy dict to DATA_BIN for evaluation
+cp preprocess/dict.mol.txt $DATA_BIN
+cp preprocess/dict.pro.txt $DATA_BIN
+
 python $FAIRSEQ/test.py \
-	--checkpoint yourCheckpointPath \
+	--checkpoint yourCheckpointFilePath \
 	--data-bin $DATA_BIN \
-	--test-data yourTestSetPath \
-	--output-fn yourResultPath
+	--test-data yourTestSetDirPath \
+	--output-fn yourResultFilePath
 ```
 

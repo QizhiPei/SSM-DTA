@@ -10,7 +10,7 @@ from lifelines.utils import concordance_index
 import numpy as np 
 
 
-def main():
+def main(args):
     logging.basicConfig(
         format="%(asctime)s | %(levelname)s | %(name)s | %(message)s",
         datefmt="%Y-%m-%d %H:%M:%S",
@@ -18,12 +18,10 @@ def main():
         stream=sys.stdout,
     )
 
-    logger = logging.getLogger(__name__)
-
     roberta = RobertaModel.from_pretrained(
-        args.checkpoint.split('/')[0],
-        checkpoint_file=args.checkpoint.split('/')[1],
-        data_name_or_path=args.data_bin
+        os.path.split(args.checkpoint)[0],
+        checkpoint_file=os.path.split(args.checkpoint)[1],
+        data_name_or_path=args.data_bin,
     )
 
     roberta.cuda()
@@ -31,7 +29,7 @@ def main():
     gold, pred = [], []
 
     i = 0
-    with open(f'{args.test_data}/test.can.re') as mol_in:
+    with open(f'{args.test_data}/test.mol.can.re') as mol_in:
         with open(f'{args.test_data}/test.pro.addspace') as pro_in:
             with open(f'{args.test_data}/test.label') as label_in:
                 with open(args.output_fn, 'w') as out_f:
