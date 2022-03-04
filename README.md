@@ -3,11 +3,12 @@
 We implement our method based on the codebase of [fairseq](https://github.com/pytorch/fairseq). 
 
 # Requirements and Installation
+* Python version == 3.7.11
 * PyTorch version == 1.10.2
 * Fairseq version == 0.10.2
 * RDKit version == 2020.09.5
 
-To install the code from source
+We use conda to manage Python environment. To install the code from source
 ```shell
 # Need to modify url when public
 git clone git@github.com:QizhiPei/DTI.git
@@ -100,7 +101,7 @@ fairseq-preprocess \
     --validpref $DATADIR/valid.mol.can.re \
     --destdir $DATA_BIN/input0 \
     --workers 40 \
-    --srcdict $DATADIR/dict.mol.txt
+    --srcdict preprocess/dict.mol.txt
 
 fairseq-preprocess \
     --only-source \
@@ -108,7 +109,7 @@ fairseq-preprocess \
     --validpref $DATADIR/valid.pro.addspace \
     --destdir $DATA_BIN/input1 \
     --workers 40 \
-    --srcdict $DATADIR/dict.pro.txt
+    --srcdict preprocess/dict.pro.txt
 
 mkdir -p $DATA_BIN/label
 
