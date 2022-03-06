@@ -1,5 +1,6 @@
 # JetBrains PyCharm IDE
 .idea/
+case_study/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
