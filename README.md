@@ -29,6 +29,14 @@ pip install future scipy sklearn lifelines requests
 pip install -e . 
 ```
 # Getting Started
+
+## Data
+
+* Unlabeled Molecule and Protein
+  * Pfam: http://pfam.xfam.org/
+  * PubChem: https://pubchem.ncbi.nlm.nih.gov/
+* BindingDB Dataset: https://github.com/Shen-Lab/DeepAffinity/tree/master/data/dataset
+
 ## Joint Training
 
 ### Data Preprocessing
