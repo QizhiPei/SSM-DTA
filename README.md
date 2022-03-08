@@ -147,8 +147,8 @@ cp $DATADIR/valid.label $DATA_BIN/label/valid.label
 ### Train Baseline
 
 ```shell
-DATA_BIN=/yourDataBinDir/bindingdb(davis or kiba)
-FAIRSEQ=$pwd
+DATA_BIN=/yourDataBinDir/bindingdb(davis or kiba)  
+FAIRSEQ=$pwd # The path to 
 SAVE_PATH=/yourCkptDir
 TOTAL_UPDATES=200000 # Total number of training steps
 WARMUP_UPDATES=10000 # Warmup the learning rate over this many updates
@@ -175,7 +175,11 @@ python $FAIRSEQ/train.py --task dti_separate $DATA_BIN \
     --find-unused-parameters | tee -a ${SAVE_PATH}/training.log
 ```
 
-### Jointly Train Ours
+* `DATA_BIN` is where you save the preprocessed data
+* `FAIRSEQ` is the path to fairseq code base
+* `SAVE_PATH` is where you save the checkpoint file and training log
+
+### Train Ours
 
 ```shell
 DATA_BIN=/yourDataBinDir
@@ -189,6 +193,8 @@ PEAK_LR=0.0001       # Peak learning rate, adjust as needed
 BATCH_SIZE=4		# Batch size
 UPDATE_FREQ=8       # Increase the batch size 8x
 MLMW=2 				# MLM loss weight
+
+# The final real batch size is BATCH_SIZE x GPU_NUM x UPDATE_FREQ
 
 mkdir -p $SAVE_PATH
 
@@ -213,7 +219,12 @@ python $FAIRSEQ/train.py --task dti_mlm_regress_pretrain $DATA_BIN \
     --best-checkpoint-metric loss_regress_mse \
     --mlm-weight-0 $MLMW --mlm-weight-1 $MLMW --mlm-weight-paired-0 $MLMW --mlm-weight-paired-1 $MLMW | tee -a ${SAVE_PATH}/training.log
 ```
-The above script will save the training log to your `SAVE_PATH`. You can also use fairseq argument `--tensorboard-logdir TENSORBOARD_LOGDIR`  to save logs for tensorboard.
+* `DATA_BIN` is where you save the preprocessed data
+* `DTI_DATASET` is the paired dataset you want to use for training
+* `FAIRSEQ` is the path to fairseq code base
+* `SAVE_PATH` is where you save the checkpoint file and training log
+
+You can also use fairseq argument `--tensorboard-logdir TENSORBOARD_LOGDIR`  to save logs for tensorboard.
 
 ## Evaluation
 
@@ -228,6 +239,11 @@ python $FAIRSEQ/test.py \
 	--test-data yourTestSetDirPath \
 	--output-fn yourResultFilePath
 ```
+
+* `DATA_BIN` is where you save the preprocessed data. We need to use the dictionary saved in this path.
+* `yourCheckpointFilePath` is the path to `.pt` file
+* `yourTestSetDirPath` is the path to your raw test data after tokenized (and canonicalized)
+* `yourResultFilePath` is where you want to save the model prediction and ground truth
 
 ## Author
 
