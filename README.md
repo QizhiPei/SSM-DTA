@@ -7,13 +7,14 @@ This repository contains the code and data link for Simple yet Effective methods
 ![](./img/arch.png)
 
 ## Requirements and Installation
-* Python version == 3.7.11
+* Python version == 3.7
 * PyTorch version == 1.10.2
 * Fairseq version == 0.10.2
 * RDKit version == 2020.09.5
 * numpy
 
-We use conda to manage Python environment. To install the code from source
+We will set up the environment using conda. Clone the current repo and fairseq official repo, then merge them:
+
 ```shell
 # Need to modify url when public
 git clone git@github.com:QizhiPei/DTI.git
@@ -26,13 +27,32 @@ git checkout v0.10.2
 
 cd $pwd
 cp -r -n /tmp/fairseq/* ./
+```
+Create a new environment: 
 
+```shell
 conda create -n fairseq-dti python=3.7
+```
+
+Activate the environment:
+
+```shell
 conda activate fairseq-dti
+```
+
+Install required packages for evaluation:
+
+```shell
 conda install -c conda-forge rdkit
 pip install future scipy sklearn lifelines requests
+```
+
+Install the code from source:
+
+```shell
 pip install -e . 
 ```
+
 ## Dataset
 
 * Unlabeled Molecule and Protein
@@ -193,6 +213,8 @@ python $FAIRSEQ/train.py --task dti_mlm_regress_pretrain $DATA_BIN \
     --best-checkpoint-metric loss_regress_mse \
     --mlm-weight-0 $MLMW --mlm-weight-1 $MLMW --mlm-weight-paired-0 $MLMW --mlm-weight-paired-1 $MLMW | tee -a ${SAVE_PATH}/training.log
 ```
+The above script will save the training log to your `SAVE_PATH`. You can also use fairseq argument `--tensorboard-logdir TENSORBOARD_LOGDIR`  to save logs for tensorboard.
+
 ## Evaluation
 
 ```shell
