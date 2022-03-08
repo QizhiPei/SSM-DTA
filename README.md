@@ -1,12 +1,12 @@
 # Simple yet Effective methods to Improve the Drug-Target Interaction Prediction
 
-This repository contains the code and data link for Simple yet Effective methods to Improve the Drug-Target Interaction Prediction. We implement our method based on the codebase of [fairseq](https://github.com/pytorch/fairseq). 
+This repository contains the code and data link for Simple yet Effective methods to Improve the Drug-Target Interaction Prediction. Our model achieves significant results compared to traditional and recent baselines. We implement our method based on the codebase of [fairseq](https://github.com/pytorch/fairseq). If you have questions, don't hesitate to open an issue or ask me via <peiqz@mail.ustc.edu.cn> or Lijun Wu via <lijun.wu@microsoft.com>. We are happy to hear from you!
 
 ## Model Architecture
 
 ![](./img/arch.png)
 
-# Requirements and Installation
+## Requirements and Installation
 * Python version == 3.7.11
 * PyTorch version == 1.10.2
 * Fairseq version == 0.10.2
@@ -33,16 +33,14 @@ conda install -c conda-forge rdkit
 pip install future scipy sklearn lifelines requests
 pip install -e . 
 ```
-# Getting Started
-
-## Data
+## Dataset
 
 * Unlabeled Molecule and Protein
   * Pfam: http://pfam.xfam.org/
   * PubChem: https://pubchem.ncbi.nlm.nih.gov/
 * BindingDB Dataset: https://github.com/Shen-Lab/DeepAffinity/tree/master/data/dataset
 
-## Joint Training
+## Getting Started
 
 ### Data Preprocessing
 
@@ -157,9 +155,7 @@ python $FAIRSEQ/train.py --task dti_separate $DATA_BIN \
     --find-unused-parameters | tee -a ${SAVE_PATH}/training.log
 ```
 
-
-
-### Train Ours
+### Jointly Train Ours
 
 ```shell
 DATA_BIN=/yourDataBinDir
