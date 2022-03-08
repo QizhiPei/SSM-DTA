@@ -245,6 +245,17 @@ python $FAIRSEQ/test.py \
 * `yourTestSetDirPath` is the path to your raw test data after tokenized (and canonicalized)
 * `yourResultFilePath` is where you want to save the model prediction and ground truth
 
+## Feature-based Training
+
+For feature-based training(only use the output from the pretrained molecule and protein encoder but not update their parameter), you need to prepare your pretrained checkpoint files in fairseq format. Use these checkpoint files to initialize your molecule and protein encoder, respectively. Then add the following code in your model class:
+
+```python
+for param in encoder_molecule.parameters():
+	param.requires_grad = False
+for param in encoder_protein.parameters():
+	param.requires_grad = False
+```
+
 ## Author
 
 Qizhi Pei
