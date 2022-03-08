@@ -1,12 +1,17 @@
-# DTI
+# Simple yet Effective methods to Improve the Drug-Target Interaction Prediction
 
-We implement our method based on the codebase of [fairseq](https://github.com/pytorch/fairseq). 
+This repository contains the code and data link for Simple yet Effective methods to Improve the Drug-Target Interaction Prediction. We implement our method based on the codebase of [fairseq](https://github.com/pytorch/fairseq). 
+
+## Model Architecture
+
+![](./img/arch.png)
 
 # Requirements and Installation
 * Python version == 3.7.11
 * PyTorch version == 1.10.2
 * Fairseq version == 0.10.2
 * RDKit version == 2020.09.5
+* numpy
 
 We use conda to manage Python environment. To install the code from source
 ```shell
@@ -205,4 +210,12 @@ python $FAIRSEQ/test.py \
 	--test-data yourTestSetDirPath \
 	--output-fn yourResultFilePath
 ```
+
+## Author
+
+Qizhi Pei
+
+Lijun Wu
+
+## Citation
 
