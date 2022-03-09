@@ -56,8 +56,8 @@ pip install -e .
 ## Dataset
 
 * Unlabeled Molecule and Protein
-  * Pfam: http://pfam.xfam.org/
-  * PubChem: https://pubchem.ncbi.nlm.nih.gov/
+  * Pfam: http://ftp.ebi.ac.uk/pub/databases/Pfam/Pfam-N/
+  * PubChem: https://ftp.ncbi.nlm.nih.gov/pubchem/Compound/CURRENT-Full/SDF/
 * BindingDB Dataset: https://github.com/Shen-Lab/DeepAffinity/tree/master/data/dataset
 
 ## Getting Started
