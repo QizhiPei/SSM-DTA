@@ -1,10 +1,10 @@
-# Simple yet Effective Methods to Improve the Drug-Target Interaction Prediction
+# Improving Drug-Target Interaction Prediction with Joint Multi-task Training
 
-This repository contains the code and data link for Simple yet Effective methods to Improve the Drug-Target Interaction Prediction. Our model achieves significant results compared to traditional and recent baselines. We implement our method based on the codebase of [fairseq](https://github.com/pytorch/fairseq). If you have questions, don't hesitate to open an issue or ask me via <pqz1811@gmail.com> or Lijun Wu via <lijuwu@microsoft.com>. We are happy to hear from you!
+This repository contains the code and data link for Improving Drug-Target Interaction Prediction with Joint Multi-task Training. Our model achieves significant results compared to traditional and recent baselines. We implement our method based on the codebase of [fairseq](https://github.com/pytorch/fairseq). If you have questions, don't hesitate to open an issue or ask me via <peiqz@mail.ustc.edu.cn> or Lijun Wu via <lijuwu@microsoft.com>. We are happy to hear from you!
 
 ## Model Architecture
 
-![](./img/arch.png)
+![](./img/arch_v1.png)
 
 ## Requirements and Installation
 * Python version == 3.7
@@ -168,7 +168,7 @@ python $FAIRSEQ/train.py --task dti_separate $DATA_BIN \
     --optimizer adam --weight-decay 0.1 --adam-betas '(0.9,0.98)' --adam-eps 1e-06 \
     --lr-scheduler polynomial_decay --lr $PEAK_LR --warmup-updates $WARMUP_UPDATES --total-num-update $TOTAL_UPDATES \
     --clip-norm 1.0  --max-update $TOTAL_UPDATES \
-    --arch roberta_dti_separate_encoder --dropout 0.1 --attention-dropout 0.1 \
+    --arch roberta_dti_cross_attn --dropout 0.1 --attention-dropout 0.1 \
     --skip-invalid-size-inputs-valid-test \
     --fp16 \
     --shorten-method truncate \
@@ -209,7 +209,7 @@ python $FAIRSEQ/train.py --task dti_mlm_regress_pretrain $DATA_BIN \
     --optimizer adam --weight-decay 0.01 --adam-betas '(0.9,0.98)' --adam-eps 1e-06 \
     --lr-scheduler polynomial_decay --lr $PEAK_LR --warmup-updates $WARMUP_UPDATES --total-num-update $TOTAL_UPDATES \
     --clip-norm 1.0  --max-update $TOTAL_UPDATES \
-    --arch roberta_dti_mlm_regress --dropout 0.1 --attention-dropout 0.1 \
+    --arch roberta_dti_cross_attn --dropout 0.1 --attention-dropout 0.1 \
     --skip-invalid-size-inputs-valid-test \
     --fp16 \
     --shorten-method truncate \

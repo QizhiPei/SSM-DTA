@@ -29,9 +29,9 @@ logger = logging.getLogger(__name__)
 DEFAULT_MAX_MOLECULE_POSITIONS = 512
 DEFAULT_MAX_PROTEIN_POSITIONS = 1024
 
-@register_model("roberta_dti_mlm_regress")
+@register_model("roberta_dti_cross_attn")
 # class RobertaDTI(RobertaModel):
-class RobertaDTIMLMRegress(BaseFairseqModel):
+class RobertaDTICrossAttn(BaseFairseqModel):
     def __init__(self, args, encoder_0, encoder_1):
         super().__init__()
         self.args = args
@@ -263,7 +263,7 @@ class RobertaDTIMLMRegress(BaseFairseqModel):
 
 
 @register_model_architecture(
-    "roberta_dti_mlm_regress", "roberta_dti_mlm_regress"
+    "roberta_dti_cross_attn", "roberta_dti_cross_attn"
 )
 def base_architecture(args):
     roberta_base_architecture(args)
