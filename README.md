@@ -1,4 +1,4 @@
-# Improving Drug-Target Interaction Prediction with Joint Multi-task Training
+# Drug-Target Interaction Prediction with Semi-supervised Multi-task Training
 
 This repository contains the code and data link for Improving Drug-Target Interaction Prediction with Joint Multi-task Training. Our model achieves significant results compared to traditional and recent baselines. We implement our method based on the codebase of [fairseq](https://github.com/pytorch/fairseq). If you have questions, don't hesitate to open an issue or ask me via <peiqz@mail.ustc.edu.cn> or Lijun Wu via <lijuwu@microsoft.com>. We are happy to hear from you!
 
