@@ -245,9 +245,11 @@ python $FAIRSEQ/test.py \
 * `yourTestSetDirPath` is the path to your raw test data after tokenized (and canonicalized)
 * `yourResultFilePath` is where you want to save the model prediction and ground truth
 
-## Feature-based Training
+## Feature-based Training/Finetune
 
-For feature-based training(only use the output from the pretrained molecule and protein encoder but not update their parameter), you need to prepare your pretrained checkpoint files in fairseq format. Use these checkpoint files to initialize your molecule and protein encoder, respectively. Then add the following code in your model class:
+For feature-based training(only use the output from the pretrained molecule and protein encoder but not update their parameter) or finetune, you need to prepare your pretrained checkpoint files in the fairseq format. Use these checkpoint files to initialize your molecule and protein encoder, respectively. The code file `fairseq/models/dti_mlm_regress_sep_encoder_from_pretrained_roberta.py` is provided for reference.
+
+To fix the encoder, you can just add the following code in your model class:
 
 ```python
 for param in encoder_molecule.parameters():
