@@ -4,7 +4,7 @@ This repository contains the code and data link for Improving Drug-Target Intera
 
 ## Model Architecture
 
-![](./img/arch_v1.png)
+![](./img/arch_v3.jpg)
 
 ## Requirements and Installation
 * Python version == 3.7
