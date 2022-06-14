@@ -103,6 +103,8 @@ fairseq-preprocess \
 ```
 #### Paired DTI data
 
+You may need to firstly follow the README in `preprocess` folder to process the data from `BindingDB_All.tsv`.
+
 ```shell
 DATADIR=/yourPairedDataDir
 DATA_BIN=/yourDataBinDir/bindingdb(davis or kiba)
