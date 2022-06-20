@@ -1,6 +1,6 @@
-# Drug-Target Interaction Prediction with Semi-supervised Multi-task Training
+# Improving Drug-Target Affinity Prediction with Semi-supervised Multi-task Training
 
-This repository contains the code and data link for Improving Drug-Target Interaction Prediction with Joint Multi-task Training. Our model achieves significant results compared to traditional and recent baselines. We implement our method based on the codebase of [fairseq](https://github.com/pytorch/fairseq). If you have questions, don't hesitate to open an issue or ask me via <peiqz@mail.ustc.edu.cn> or Lijun Wu via <lijuwu@microsoft.com>. We are happy to hear from you!
+This repository contains the code and data link for Improving Drug-Target Affinity Prediction with Semi-supervised Multi-task Training. Our model achieves significant results compared to traditional and recent baselines. We implement our method based on the codebase of [fairseq](https://github.com/pytorch/fairseq). If you have questions, don't hesitate to open an issue or ask me via <peiqz@mail.ustc.edu.cn> or Lijun Wu via <lijuwu@microsoft.com>. We are happy to hear from you!
 
 ## Model Architecture
 
@@ -17,8 +17,8 @@ We will set up the environment using conda. Clone the current repo and fairseq o
 
 ```shell
 # Need to modify url when public
-git clone git@github.com:QizhiPei/DTI.git
-cd DTI
+git clone https://github.com/QizhiPei/SMT-DTA.git
+cd SMT-DTA
 pwd=$PWD
 
 git clone git@github.com:pytorch/fairseq.git /tmp/fairseq
@@ -31,13 +31,13 @@ cp -r -n /tmp/fairseq/* ./
 Create a new environment: 
 
 ```shell
-conda create -n fairseq-dti python=3.7
+conda create -n fairseq-smt-dta python=3.7
 ```
 
 Activate the environment:
 
 ```shell
-conda activate fairseq-dti
+conda activate fairseq-smt-dta
 ```
 
 Install required packages for evaluation:
@@ -101,7 +101,7 @@ fairseq-preprocess \
     --workers 40 \
     --srcdict preprocess/dict.pro.txt
 ```
-#### Paired DTI data
+#### Paired DTA data
 
 You may need to firstly follow the README in `preprocess` folder to process the data from `BindingDB_All.tsv`.
 
@@ -181,11 +181,11 @@ python $FAIRSEQ/train.py --task dti_separate $DATA_BIN \
 * `FAIRSEQ` is the path to fairseq code base
 * `SAVE_PATH` is where you save the checkpoint file and training log
 
-### Train Ours
+### Train SMT-DTA Model
 
 ```shell
 DATA_BIN=/yourDataBinDir
-DTI_DATASET=bindingdb(davis or kiba)
+DTA_DATASET=bindingdb(davis or kiba)
 FAIRSEQ=$pwd
 SAVE_PATH=/yourCkptDir
 TOTAL_UPDATES=200000 # Total number of training steps
@@ -201,7 +201,7 @@ MLMW=2 				# MLM loss weight
 mkdir -p $SAVE_PATH
 
 python $FAIRSEQ/train.py --task dti_mlm_regress_pretrain $DATA_BIN \
-	--dti-dataset $DTI_DATASET \
+	--dti-dataset $DTA_DATASET \
     --num-classes 1 --init-token 0 \
     --max-positions-molecule 512 --max-positions-protein 1024 \
     --save-dir $SAVE_PATH \
@@ -222,7 +222,7 @@ python $FAIRSEQ/train.py --task dti_mlm_regress_pretrain $DATA_BIN \
     --mlm-weight-0 $MLMW --mlm-weight-1 $MLMW --mlm-weight-paired-0 $MLMW --mlm-weight-paired-1 $MLMW | tee -a ${SAVE_PATH}/training.log
 ```
 * `DATA_BIN` is where you save the preprocessed data
-* `DTI_DATASET` is the paired dataset you want to use for training
+* `DTA_DATASET` is the paired dataset you want to use for training
 * `FAIRSEQ` is the path to fairseq code base
 * `SAVE_PATH` is where you save the checkpoint file and training log
 
