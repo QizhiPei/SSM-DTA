@@ -260,11 +260,25 @@ for param in encoder_protein.parameters():
 	param.requires_grad = False
 ```
 
-## Author
-
-Qizhi Pei
-
-Lijun Wu
-
 ## Citation
 
+If you find our code is helpful for you, please consider citing our paper:
+
+```
+@misc{https://doi.org/10.48550/arxiv.2206.09818,
+  doi = {10.48550/ARXIV.2206.09818},
+  url = {https://arxiv.org/abs/2206.09818},
+  author = {Pei, Qizhi and Wu, Lijun and Zhu, Jinhua and Xia, Yingce and Xia, Shufang and Qin, Tao and Liu, Haiguang and Liu, Tie-Yan},
+  keywords = {Biomolecules (q-bio.BM), Artificial Intelligence (cs.AI), Machine Learning (cs.LG), FOS: Biological sciences, FOS: Biological sciences, FOS: Computer and information sciences, FOS: Computer and information sciences},
+  title = {SMT-DTA: Improving Drug-Target Affinity Prediction with Semi-supervised Multi-task Training},
+  publisher = {arXiv},
+  year = {2022},
+  copyright = {arXiv.org perpetual, non-exclusive license}
+}
+```
+
+## Contacts
+
+Qizhi Pei: peiqz@mail.ustc.edu.cn
+
+Lijun Wu: lijuwu@microsoft.com
