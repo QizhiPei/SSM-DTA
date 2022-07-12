@@ -1,6 +1,6 @@
 # Preprocess from DeepAffinity
 
-(This part is copied from [DeepAffinity](https://github.com/Shen-Lab/DeepAffinity/tree/master/data/script/split_data_script) and modified. Note that the Google Drive link is a sdf file, not a tsv file, which may need further modification)
+(This part is copied from [DeepAffinity](https://github.com/Shen-Lab/DeepAffinity/tree/master/data/script/split_data_script) and modified. Note that the Google Drive link provided by DeepAffinty is actually a sdf file, not a tsv file, which may need further modification)
 
 1. Download dataset from bindingDB website in tsv format:
    https://drive.google.com/open?id=1_uZVTBVPeeF64joitPU8uDZnfIGS1me0
