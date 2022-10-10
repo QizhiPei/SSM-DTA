@@ -277,6 +277,10 @@ If you find our code is helpful for you, please consider citing our paper:
 }
 ```
 
+## License
+
+This project is licensed under the terms of the MIT license. See [LICENSE](https://github.com/QizhiPei/SMT-DTA/blob/main/LICENSE) for additional details.
+
 ## Contacts
 
 Qizhi Pei: peiqz@mail.ustc.edu.cn
