@@ -1,6 +1,36 @@
 # SMT-DTA: Improving Drug-Target Affinity Prediction with Semi-supervised Multi-task Training
 
+[[arxiv](https://arxiv.org/abs/2206.09818)]
+
+Authors: Qizhi Pei, Lijun Wu, Jinhua Zhu, Yingce Xia, Shufang Xie, Tao Qin, Haiguang Liu, Tie-Yan Liu
+
 This repository contains the code and data link for [SMT-DTA: Improving Drug-Target Affinity Prediction with Semi-supervised Multi-task Training](https://arxiv.org/abs/2206.09818). Our model achieves significant results compared to traditional and recent baselines. We implement our method based on the codebase of [fairseq](https://github.com/pytorch/fairseq). If you have questions, don't hesitate to open an issue or ask me via <peiqz@mail.ustc.edu.cn> or Lijun Wu via <lijuwu@microsoft.com>. We are happy to hear from you!
+
+## News
+
+**Oct 21 2022**: Pre-trained models and date are released. You can directly test our pre-trained model by our inference scripts.
+
+## SMT-DTA's Training Data
+
+There are total 4 paired datasets and 2 unlabeled datasets. Please refer to our paper for more details
+
+### Paired Datasets
+
+| Dataset        | File Size | Update Date  | Download Link |
+| -------------- | --------- | ------------ | ------------- |
+| BindingDB IC50 |           | Oct 22, 2022 |               |
+| BindingDB Ki   |           | Oct 22, 2022 |               |
+| KIBA           |           | Oct 22, 2022 |               |
+| DAVIS          |           | Oct 22, 2022 |               |
+
+### Unlabeled Datasets
+
+| Dataset     | File Size | Update Date  | Download Link |
+| ----------- | --------- | ------------ | ------------- |
+| PubChem 10M |           | Oct 22, 2022 |               |
+| Pfam 10M    |           | Oct 22, 2022 |               |
+
+## SMT-DTA Pre-trained Model Weights
 
 ## Model Architecture
 
@@ -31,13 +61,13 @@ cp -r -n /tmp/fairseq/* ./
 Create a new environment: 
 
 ```shell
-conda create -n fairseq-smt-dta python=3.7
+conda create -n py37-dta python=3.7
 ```
 
 Activate the environment:
 
 ```shell
-conda activate fairseq-smt-dta
+conda activate py37-dta
 ```
 
 Install required packages for evaluation:
@@ -228,7 +258,7 @@ python $FAIRSEQ/train.py --task dti_mlm_regress_pretrain $DATA_BIN \
 
 You can also use fairseq argument `--tensorboard-logdir TENSORBOARD_LOGDIR`  to save logs for tensorboard.
 
-## Evaluation
+## Evaluation/Inference
 
 ```shell
 # Copy dict to DATA_BIN for evaluation
@@ -246,6 +276,18 @@ python $FAIRSEQ/test.py \
 * `yourCheckpointFilePath` is the path to `.pt` file
 * `yourTestSetDirPath` is the path to your raw test data after tokenized (and canonicalized)
 * `yourResultFilePath` is where you want to save the model prediction and ground truth
+
+The upper evaluation code can only use `batch_size=1`. For quicker evaluation with larger customed batch size, you can use the following script:
+
+```shell
+python fairseq_cli/validate.py \
+    --task dti_mlm_regress \
+    --batch-size 32 \
+    --valid-subset test \
+    --criterion dti_mlm_regress_eval \
+    --path yourCheckpointFilePath \
+    $DATA_BIN/bindingdb
+```
 
 ## Feature-based Training/Finetune
 
