@@ -12,11 +12,11 @@ This repository contains the code and data link for [SMT-DTA: Improving Drug-Tar
 
 **Oct 21 2022**: Pre-trained models are released. You can directly test our pre-trained model by our inference scripts.
 
-## SMT-DTA's Training Data
+## SMT-DTA's Data
 
 There are total 4 paired datasets and 2 unlabeled datasets. Please refer to our paper for more details
 
-### Paired Datasets
+### Preprocessed Paired Datasets
 
 | Dataset        | File Path in Shared Folder | Update Date  | Download Link                                                |
 | -------------- | -------------------------- | ------------ | ------------------------------------------------------------ |
@@ -25,12 +25,26 @@ There are total 4 paired datasets and 2 unlabeled datasets. Please refer to our 
 | KIBA           | KIBA.tar.gz                | Oct 22, 2022 | https://mailustceducn-my.sharepoint.com/:f:/g/personal/peiqz_mail_ustc_edu_cn/El98p8TwBh5LhCEoUKI6Yj0BZaWpv0b_sSIAYLLksUlnSA?e=zkvCpQ |
 | DAVIS          | DAVIS.tar.gz               | Oct 22, 2022 | https://mailustceducn-my.sharepoint.com/:f:/g/personal/peiqz_mail_ustc_edu_cn/El98p8TwBh5LhCEoUKI6Yj0BZaWpv0b_sSIAYLLksUlnSA?e=zkvCpQ |
 
-### Unlabeled Datasets
+### Preprocessed Unlabeled Datasets
 
 | Dataset     | File Path in Shared Folder | Update Date  | Download Link                                                |
 | ----------- | -------------------------- | ------------ | ------------------------------------------------------------ |
 | PubChem 10M | molecule.tar.gz            | Oct 22, 2022 | https://mailustceducn-my.sharepoint.com/:f:/g/personal/peiqz_mail_ustc_edu_cn/El98p8TwBh5LhCEoUKI6Yj0BZaWpv0b_sSIAYLLksUlnSA?e=zkvCpQ |
 | Pfam 10M    | protein.tar.gz             | Oct 22, 2022 | https://mailustceducn-my.sharepoint.com/:f:/g/personal/peiqz_mail_ustc_edu_cn/El98p8TwBh5LhCEoUKI6Yj0BZaWpv0b_sSIAYLLksUlnSA?e=zkvCpQ |
+
+### Data Folder Format
+
+Take the BindingDB_IC50 data for example, the processed data folder should be organized in the following format:
+
+```
+DATA_BIN
+  |-BindingDB_IC50 # This folder name should be the same as --dti-dataset argument
+    |-input0
+    |-input1
+    |-label
+  |-molecule 
+  |-protein
+```
 
 ## SMT-DTA Pre-trained Model Checkpoints
 
@@ -94,9 +108,9 @@ Install the code from source:
 pip install -e . 
 ```
 
-## Dataset
+## Raw Dataset
 
-* Unlabeled Molecule and Protein
+* We collected unlabeled molecule and protein data from the following public database:
   * Pfam: http://ftp.ebi.ac.uk/pub/databases/Pfam/current_release/
   * PubChem: https://ftp.ncbi.nlm.nih.gov/pubchem/Compound/CURRENT-Full/SDF/
 * BindingDB Dataset: https://github.com/Shen-Lab/DeepAffinity/tree/master/data/dataset
@@ -169,6 +183,7 @@ fairseq-preprocess \
     --only-source \
     --trainpref $DATADIR/train.mol.can.re \
     --validpref $DATADIR/valid.mol.can.re \
+    --testpref $DATADIR/test.mol.can.re \
     --destdir $DATA_BIN/input0 \
     --workers 40 \
     --srcdict preprocess/dict.mol.txt
@@ -177,6 +192,7 @@ fairseq-preprocess \
     --only-source \
     --trainpref $DATADIR/train.pro.addspace \
     --validpref $DATADIR/valid.pro.addspace \
+    --testpref $DATADIR/test.pro.addspace \
     --destdir $DATA_BIN/input1 \
     --workers 40 \
     --srcdict preprocess/dict.pro.txt
@@ -226,7 +242,7 @@ python $FAIRSEQ/train.py --task dti_separate $DATA_BIN \
 
 ```shell
 DATA_BIN=/yourDataBinDir
-DTA_DATASET=bindingdb(davis or kiba)
+DTA_DATASET=BindingDB_IC50(or BindingDB_Ki or DAVIS or KIBA)
 FAIRSEQ=$pwd
 SAVE_PATH=/yourCkptDir
 TOTAL_UPDATES=200000 # Total number of training steps
@@ -297,7 +313,7 @@ python fairseq_cli/validate.py \
     --valid-subset test \
     --criterion dti_mlm_regress_eval \
     --path yourCheckpointFilePath \
-    $DATA_BIN/bindingdb
+    $DATA_BIN/BindingDB_IC50(or BindingDB_Ki or DAVIS or KIBA)
 ```
 
 ## Feature-based Training/Finetune
