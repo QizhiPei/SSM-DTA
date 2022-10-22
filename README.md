@@ -8,7 +8,9 @@ This repository contains the code and data link for [SMT-DTA: Improving Drug-Tar
 
 ## News
 
-**Oct 21 2022**: Pre-trained models and date are released. You can directly test our pre-trained model by our inference scripts.
+**Oct 22 2022**: Pre-trained data is released.
+
+**Oct 21 2022**: Pre-trained models are released. You can directly test our pre-trained model by our inference scripts.
 
 ## SMT-DTA's Training Data
 
@@ -16,21 +18,30 @@ There are total 4 paired datasets and 2 unlabeled datasets. Please refer to our 
 
 ### Paired Datasets
 
-| Dataset        | File Size | Update Date  | Download Link |
-| -------------- | --------- | ------------ | ------------- |
-| BindingDB IC50 |           | Oct 22, 2022 |               |
-| BindingDB Ki   |           | Oct 22, 2022 |               |
-| KIBA           |           | Oct 22, 2022 |               |
-| DAVIS          |           | Oct 22, 2022 |               |
+| Dataset        | File Path in Shared Folder | Update Date  | Download Link                                                |
+| -------------- | -------------------------- | ------------ | ------------------------------------------------------------ |
+| BindingDB IC50 | BindingDB_IC50.tar.gz      | Oct 22, 2022 | https://mailustceducn-my.sharepoint.com/:f:/g/personal/peiqz_mail_ustc_edu_cn/El98p8TwBh5LhCEoUKI6Yj0BZaWpv0b_sSIAYLLksUlnSA?e=zkvCpQ |
+| BindingDB Ki   | BindingDB_Ki.tar.gz        | Oct 22, 2022 | https://mailustceducn-my.sharepoint.com/:f:/g/personal/peiqz_mail_ustc_edu_cn/El98p8TwBh5LhCEoUKI6Yj0BZaWpv0b_sSIAYLLksUlnSA?e=zkvCpQ |
+| KIBA           | KIBA.tar.gz                | Oct 22, 2022 | https://mailustceducn-my.sharepoint.com/:f:/g/personal/peiqz_mail_ustc_edu_cn/El98p8TwBh5LhCEoUKI6Yj0BZaWpv0b_sSIAYLLksUlnSA?e=zkvCpQ |
+| DAVIS          | DAVIS.tar.gz               | Oct 22, 2022 | https://mailustceducn-my.sharepoint.com/:f:/g/personal/peiqz_mail_ustc_edu_cn/El98p8TwBh5LhCEoUKI6Yj0BZaWpv0b_sSIAYLLksUlnSA?e=zkvCpQ |
 
 ### Unlabeled Datasets
 
-| Dataset     | File Size | Update Date  | Download Link |
-| ----------- | --------- | ------------ | ------------- |
-| PubChem 10M |           | Oct 22, 2022 |               |
-| Pfam 10M    |           | Oct 22, 2022 |               |
+| Dataset     | File Path in Shared Folder | Update Date  | Download Link                                                |
+| ----------- | -------------------------- | ------------ | ------------------------------------------------------------ |
+| PubChem 10M | molecule.tar.gz            | Oct 22, 2022 | https://mailustceducn-my.sharepoint.com/:f:/g/personal/peiqz_mail_ustc_edu_cn/El98p8TwBh5LhCEoUKI6Yj0BZaWpv0b_sSIAYLLksUlnSA?e=zkvCpQ |
+| Pfam 10M    | protein.tar.gz             | Oct 22, 2022 | https://mailustceducn-my.sharepoint.com/:f:/g/personal/peiqz_mail_ustc_edu_cn/El98p8TwBh5LhCEoUKI6Yj0BZaWpv0b_sSIAYLLksUlnSA?e=zkvCpQ |
 
-## SMT-DTA Pre-trained Model Weights
+## SMT-DTA Pre-trained Model Checkpoints
+
+| Model          | File Path in Shared Folder                 | Update Data  | Download Link                                                |
+| -------------- | ------------------------------------------ | ------------ | ------------------------------------------------------------ |
+| BindingDB IC50 | BindingDB_IC50/checkpoint_best_20221021.pt | Oct 21, 2022 | https://mailustceducn-my.sharepoint.com/:f:/g/personal/peiqz_mail_ustc_edu_cn/EluW1t5l25RFluRkBkPS3jABueKqxPhxIesJJHc7IE3vdw?e=2e88A3 |
+| BindingDB Ki   | BindingDB_Ki/checkpoint_best_20221021.pt   | Oct 21, 2022 | https://mailustceducn-my.sharepoint.com/:f:/g/personal/peiqz_mail_ustc_edu_cn/EluW1t5l25RFluRkBkPS3jABueKqxPhxIesJJHc7IE3vdw?e=2e88A3 |
+| KIBA           | KIBA/checkpoint_best_20221021.pt           | Oct 21, 2022 | https://mailustceducn-my.sharepoint.com/:f:/g/personal/peiqz_mail_ustc_edu_cn/EluW1t5l25RFluRkBkPS3jABueKqxPhxIesJJHc7IE3vdw?e=2e88A3 |
+| DAVIS          | DAVIS/checkpoint_best_20221021.pt          | Oct 21, 2022 | https://mailustceducn-my.sharepoint.com/:f:/g/personal/peiqz_mail_ustc_edu_cn/EluW1t5l25RFluRkBkPS3jABueKqxPhxIesJJHc7IE3vdw?e=2e88A3 |
+
+
 
 ## Model Architecture
 
