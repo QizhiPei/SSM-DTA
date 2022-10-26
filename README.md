@@ -110,9 +110,13 @@ pip install -e .
 
 ## Raw Dataset
 
-* We collected unlabeled molecule and protein data from the following public database:
-  * Pfam: http://ftp.ebi.ac.uk/pub/databases/Pfam/current_release/
-  * PubChem: https://ftp.ncbi.nlm.nih.gov/pubchem/Compound/CURRENT-Full/SDF/
+* We collected and randomly sample the unlabeled molecule and protein data from the following public database:
+  * Pfam: [pfamseq.gz file](http://ftp.ebi.ac.uk/pub/databases/Pfam/current_release/pfamseq.gz)
+  * PubChem:
+  
+    * Extract the SMILES from the .sdf file from [PubChem ftp SDF](https://ftp.ncbi.nlm.nih.gov/pubchem/Compound/CURRENT-Full/SDF/)
+  
+    * Or [PubChem CID-SMILES file](https://ftp.ncbi.nlm.nih.gov/pubchem/Compound/Extras/CID-SMILES.gz)
 * BindingDB Dataset: https://github.com/Shen-Lab/DeepAffinity/tree/master/data/dataset
 
 ## Getting Started
