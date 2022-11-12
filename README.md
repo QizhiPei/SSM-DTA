@@ -118,6 +118,7 @@ pip install -e .
   
     * Or [PubChem CID-SMILES file](https://ftp.ncbi.nlm.nih.gov/pubchem/Compound/Extras/CID-SMILES.gz)
 * BindingDB Dataset: https://github.com/Shen-Lab/DeepAffinity/tree/master/data/dataset
+* DAVIS and KIBA datasets: https://github.com/kexinhuang12345/DeepPurpose
 
 ## Getting Started
 
@@ -162,7 +163,7 @@ fairseq-preprocess \
 ```
 #### Paired DTA data
 
-You may need to firstly follow the README in `preprocess` folder to process the data from `BindingDB_All.tsv`.
+You may need to firstly follow the README in `preprocess` folder to process the data from `BindingDB_All.tsv` and downloaded DAVIS and KIBA datasets from Deeppurpose.
 
 ```shell
 DATADIR=/yourPairedDataDir
