@@ -118,7 +118,7 @@ pip install -e .
   
     * Or [PubChem CID-SMILES file](https://ftp.ncbi.nlm.nih.gov/pubchem/Compound/Extras/CID-SMILES.gz)
 * BindingDB Dataset: https://github.com/Shen-Lab/DeepAffinity/tree/master/data/dataset
-* DAVIS and KIBA datasets: https://github.com/kexinhuang12345/DeepPurpose
+* DAVIS and KIBA Datasets: https://github.com/kexinhuang12345/DeepPurpose
 
 ## Getting Started
 
