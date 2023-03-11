@@ -451,7 +451,7 @@ class DTIMlmRegressPretrainTask(LegacyFairseqTask):
                         )
                     )
 
-            # 这里的sizes怎么传比较好？
+            # use src_dataset_0 sizes
             nested_dataset = NestedDictionaryDataset(
                 dataset,
                 sizes=[src_dataset_0.sizes],
