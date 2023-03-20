@@ -71,7 +71,6 @@ DATA_BIN
 We will set up the environment using conda. Clone the current repo and fairseq official repo, then merge them:
 
 ```shell
-# Need to modify url when public
 git clone https://github.com/QizhiPei/SMT-DTA.git
 cd SMT-DTA
 pwd=$PWD
