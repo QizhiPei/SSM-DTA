@@ -4,7 +4,7 @@
 
 Authors: Qizhi Pei, Lijun Wu, Jinhua Zhu, Yingce Xia, Shufang Xie, Tao Qin, Haiguang Liu, Tie-Yan Liu
 
-This repository contains the code and data link for *Briefings in Bioinformatics* paper [SMT-DTA: Improving Drug-Target Affinity Prediction with Semi-supervised Multi-task Training](https://arxiv.org/abs/2206.09818). Our model achieves significant results compared to traditional and recent baselines. We implement our method based on the codebase of [fairseq](https://github.com/pytorch/fairseq). If you have questions, don't hesitate to open an issue or ask me via <peiqz@mail.ustc.edu.cn> or Lijun Wu via <lijuwu@microsoft.com>. We are happy to hear from you!
+This repository contains the code and data link for *Briefings in Bioinformatics 2023* paper [SMT-DTA: Improving Drug-Target Affinity Prediction with Semi-supervised Multi-task Training](https://arxiv.org/abs/2206.09818). Our model achieves significant results compared to traditional and recent baselines. We implement our method based on the codebase of [fairseq](https://github.com/pytorch/fairseq). If you have questions, don't hesitate to open an issue or ask me via <peiqz@mail.ustc.edu.cn> or Lijun Wu via <lijuwu@microsoft.com>. We are happy to hear from you!
 
 ## News
 
