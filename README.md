@@ -1,6 +1,14 @@
-# SMT-DTA: Improving Drug-Target Affinity Prediction with Semi-supervised Multi-task Training
+<h1 align="center">
+SMT-DTA: Improving Drug-Target Affinity Prediction with Semi-supervised Multi-task Training 🔥
+</h1>
 
-[[arxiv](https://arxiv.org/abs/2206.09818)]
+<div align="center">
+
+[![](https://img.shields.io/badge/paper-pink?style=plastic&logo=GitBook)](https://arxiv.org/abs/2206.09818)
+[![](https://img.shields.io/badge/-github-green?style=plastic&logo=github)](https://github.com/QizhiPei/SMT-DTA)
+</div>
+
+## Overview
 
 Authors: Qizhi Pei, Lijun Wu, Jinhua Zhu, Yingce Xia, Shufang Xie, Tao Qin, Haiguang Liu, Tie-Yan Liu
 
