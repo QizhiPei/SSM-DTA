@@ -13,7 +13,7 @@ SSM-DTA: Breaking the Barriers of Data Scarcity in Drug-Target Affinity Predicti
 
 Authors: Qizhi Pei, Lijun Wu, Jinhua Zhu, Yingce Xia, Shufang Xie, Tao Qin, Haiguang Liu, Tie-Yan Liu, Rui Yan
 
-This repository contains the code and data link for *Briefings in Bioinformatics 2023* paper [SSM-DTA: Breaking the Barriers of Data Scarcity in Drug-Target Affinity Prediction](https://arxiv.org/abs/2206.09818). Our model achieves significant results compared to traditional and recent baselines. We implement our method based on the codebase of [fairseq](https://github.com/pytorch/fairseq). If you have questions, don't hesitate to open an issue or ask me via <peiqz@mail.ustc.edu.cn> or Lijun Wu via <lijuwu@microsoft.com>. We are happy to hear from you!
+This repository contains the code and data link for *Briefings in Bioinformatics 2023* paper [SSM-DTA: Breaking the Barriers of Data Scarcity in Drug-Target Affinity Prediction](https://arxiv.org/abs/2206.09818). Our model achieves significant results compared to traditional and recent baselines. We implement our method based on the codebase of [fairseq](https://github.com/pytorch/fairseq). If you have questions, don't hesitate to open an issue or ask me via <qizhipei@ruc.edu.cn> or Lijun Wu via <lijuwu@microsoft.com>. We are happy to hear from you!
 
 ## News
 **Oct 6 2023**: Accepted by Briefings in Bioinformatics.
@@ -366,6 +366,6 @@ This project is licensed under the terms of the MIT license. See [LICENSE](https
 
 ## Contacts
 
-Qizhi Pei: peiqz@mail.ustc.edu.cn
+Qizhi Pei: qizhipei@ruc.edu.cn
 
 Lijun Wu: lijuwu@microsoft.com
