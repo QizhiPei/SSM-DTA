@@ -1,26 +1,28 @@
 <h1 align="center">
-SMT-DTA: Improving Drug-Target Affinity Prediction with Semi-supervised Multi-task Training 🔥
+SSM-DTA: Breaking the Barriers of Data Scarcity in Drug-Target Affinity Prediction 🔥
 </h1>
 
 <div align="center">
 
-[![](https://img.shields.io/badge/paper-pink?style=plastic&logo=GitBook)](https://arxiv.org/abs/2206.09818)
-[![](https://img.shields.io/badge/-github-green?style=plastic&logo=github)](https://github.com/QizhiPei/SMT-DTA)
+[![](https://img.shields.io/badge/paper-Briefings_in_Bioinformatics-pink?style=plastic&logo=GitBook)](https://doi.org/10.1093/bib/bbad386)
+[![](https://img.shields.io/badge/paper-arxiv-pink?style=plastic&logo=GitBook)](https://arxiv.org/abs/2206.09818)
+[![](https://img.shields.io/badge/-github-green?style=plastic&logo=github)](https://github.com/QizhiPei/SSM-DTA)
 </div>
 
 ## Overview
 
-Authors: Qizhi Pei, Lijun Wu, Jinhua Zhu, Yingce Xia, Shufang Xie, Tao Qin, Haiguang Liu, Tie-Yan Liu
+Authors: Qizhi Pei, Lijun Wu, Jinhua Zhu, Yingce Xia, Shufang Xie, Tao Qin, Haiguang Liu, Tie-Yan Liu, Rui Yan
 
-This repository contains the code and data link for *Briefings in Bioinformatics 2023* paper [SMT-DTA: Improving Drug-Target Affinity Prediction with Semi-supervised Multi-task Training](https://arxiv.org/abs/2206.09818). Our model achieves significant results compared to traditional and recent baselines. We implement our method based on the codebase of [fairseq](https://github.com/pytorch/fairseq). If you have questions, don't hesitate to open an issue or ask me via <peiqz@mail.ustc.edu.cn> or Lijun Wu via <lijuwu@microsoft.com>. We are happy to hear from you!
+This repository contains the code and data link for *Briefings in Bioinformatics 2023* paper [SSM-DTA: Breaking the Barriers of Data Scarcity in Drug-Target Affinity Prediction](https://arxiv.org/abs/2206.09818). Our model achieves significant results compared to traditional and recent baselines. We implement our method based on the codebase of [fairseq](https://github.com/pytorch/fairseq). If you have questions, don't hesitate to open an issue or ask me via <peiqz@mail.ustc.edu.cn> or Lijun Wu via <lijuwu@microsoft.com>. We are happy to hear from you!
 
 ## News
+**Oct 6 2023**: Accepted by Briefings in Bioinformatics.
 
 **Oct 22 2022**: Pre-trained data is released.
 
 **Oct 21 2022**: Pre-trained models are released. You can directly test our pre-trained model by our inference scripts.
 
-## SMT-DTA's Data
+## SSM-DTA's Data
 
 There are total 4 paired datasets and 2 unlabeled datasets. Please refer to our paper for more details
 
@@ -54,7 +56,7 @@ DATA_BIN
   |-protein
 ```
 
-## SMT-DTA Pre-trained Model Checkpoints
+## SSM-DTA Pre-trained Model Checkpoints
 
 | Model          | File Path in Shared Folder                 | Update Data  | Download Link                                                |
 | -------------- | ------------------------------------------ | ------------ | ------------------------------------------------------------ |
@@ -67,7 +69,7 @@ DATA_BIN
 
 ## Model Architecture
 
-![](./img/arch_v3.jpg)
+![](./img/arch.jpg)
 
 ## Requirements and Installation
 * Python version == 3.7
@@ -79,8 +81,8 @@ DATA_BIN
 We will set up the environment using conda. Clone the current repo and fairseq official repo, then merge them:
 
 ```shell
-git clone https://github.com/QizhiPei/SMT-DTA.git
-cd SMT-DTA
+git clone https://github.com/QizhiPei/SSM-DTA.git
+cd SSM-DTA
 pwd=$PWD
 
 git clone git@github.com:pytorch/fairseq.git /tmp/fairseq
@@ -250,7 +252,7 @@ python $FAIRSEQ/train.py --task dti_separate $DATA_BIN \
 * `FAIRSEQ` is the path to fairseq code base
 * `SAVE_PATH` is where you save the checkpoint file and training log
 
-### Train SMT-DTA Model
+### Train SSM-DTA Model
 
 ```shell
 DATA_BIN=/yourDataBinDir
@@ -360,7 +362,7 @@ If you find our code is helpful for you, please consider citing our paper:
 
 ## License
 
-This project is licensed under the terms of the MIT license. See [LICENSE](https://github.com/QizhiPei/SMT-DTA/blob/main/LICENSE) for additional details.
+This project is licensed under the terms of the MIT license. See [LICENSE](https://github.com/QizhiPei/SSM-DTA/blob/main/LICENSE) for additional details.
 
 ## Contacts
 
