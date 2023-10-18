@@ -348,15 +348,13 @@ for param in encoder_protein.parameters():
 If you find our code is helpful for you, please consider citing our paper:
 
 ```
-@misc{https://doi.org/10.48550/arxiv.2206.09818,
-  doi = {10.48550/ARXIV.2206.09818},
-  url = {https://arxiv.org/abs/2206.09818},
-  author = {Pei, Qizhi and Wu, Lijun and Zhu, Jinhua and Xia, Yingce and Xie, Shufang and Qin, Tao and Liu, Haiguang and Liu, Tie-Yan},
-  keywords = {Biomolecules (q-bio.BM), Artificial Intelligence (cs.AI), Machine Learning (cs.LG), FOS: Biological sciences, FOS: Biological sciences, FOS: Computer and information sciences, FOS: Computer and information sciences},
-  title = {SMT-DTA: Improving Drug-Target Affinity Prediction with Semi-supervised Multi-task Training},
-  publisher = {arXiv},
-  year = {2022},
-  copyright = {arXiv.org perpetual, non-exclusive license}
+@misc{pei2023ssmdta,
+      title={SSM-DTA: Breaking the Barriers of Data Scarcity in Drug-Target Affinity Prediction}, 
+      author={Qizhi Pei and Lijun Wu and Jinhua Zhu and Yingce Xia and Shufang Xie and Tao Qin and Haiguang Liu and Tie-Yan Liu and Rui Yan},
+      year={2023},
+      eprint={2206.09818},
+      archivePrefix={arXiv},
+      primaryClass={q-bio.BM}
 }
 ```
 
