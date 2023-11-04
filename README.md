@@ -5,8 +5,10 @@ SSM-DTA: Breaking the Barriers of Data Scarcity in Drug-Target Affinity Predicti
 <div align="center">
 
 [![](https://img.shields.io/badge/paper-Briefings_in_Bioinformatics-pink?style=plastic&logo=GitBook)](https://doi.org/10.1093/bib/bbad386)
-[![](https://img.shields.io/badge/paper-arxiv-red?style=plastic&logo=GitBook)](https://arxiv.org/abs/2206.09818)
+[![](https://img.shields.io/badge/paper-arxiv2206.09818-red?style=plastic&logo=GitBook)](https://arxiv.org/abs/2206.09818)
 [![](https://img.shields.io/badge/github-green?style=plastic&logo=github)](https://github.com/QizhiPei/SSM-DTA)
+[![](https://img.shields.io/badge/PyTorch-1.10+-ee4c2c?logo=pytorch&logoColor=white)](https://pytorch.org/get-started/locally/)
+
 </div>
 
 ## Overview
