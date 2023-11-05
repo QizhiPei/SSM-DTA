@@ -15,7 +15,7 @@ SSM-DTA: Breaking the Barriers of Data Scarcity in Drug-Target Affinity Predicti
 
 Authors: Qizhi Pei, Lijun Wu, Jinhua Zhu, Yingce Xia, Shufang Xie, Tao Qin, Haiguang Liu, Tie-Yan Liu, Rui Yan
 
-This repository contains the code and data link for *Briefings in Bioinformatics 2023* paper [SSM-DTA: Breaking the Barriers of Data Scarcity in Drug-Target Affinity Prediction](https://arxiv.org/abs/2206.09818). Our model achieves significant results compared to traditional and recent baselines. We implement our method based on the codebase of [fairseq](https://github.com/pytorch/fairseq). If you have questions, don't hesitate to open an issue or ask me via <qizhipei@ruc.edu.cn> or Lijun Wu via <lijuwu@microsoft.com>. We are happy to hear from you!
+This repository contains the code and data link for *Briefings in Bioinformatics 2023* paper [SSM-DTA: Breaking the Barriers of Data Scarcity in Drug-Target Affinity Prediction](https://academic.oup.com/bib/article/24/6/bbad386/7333673). Our model achieves significant results compared to traditional and recent baselines. We implement our method based on the codebase of [fairseq](https://github.com/pytorch/fairseq). If you have questions, don't hesitate to open an issue or ask me via <qizhipei@ruc.edu.cn> or Lijun Wu via <lijuwu@microsoft.com>. We are happy to hear from you!
 
 ## News
 **Oct 6 2023**: Accepted by Briefings in Bioinformatics. Rename **SMT-DTA** to **SSM-DTA**.
@@ -350,6 +350,17 @@ for param in encoder_protein.parameters():
 If you find our code is helpful for you, please consider citing our paper:
 
 ```
+@article{pei2023breaking,
+  title={Breaking the barriers of data scarcity in drug--target affinity prediction},
+  author={Pei, Qizhi and Wu, Lijun and Zhu, Jinhua and Xia, Yingce and Xie, Shufang and Qin, Tao and Liu, Haiguang and Liu, Tie-Yan and Yan, Rui},
+  journal={Briefings in Bioinformatics},
+  volume={24},
+  number={6},
+  pages={bbad386},
+  year={2023},
+  publisher={Oxford University Press}
+}
+
 @misc{pei2023ssmdta,
       title={SSM-DTA: Breaking the Barriers of Data Scarcity in Drug-Target Affinity Prediction}, 
       author={Qizhi Pei and Lijun Wu and Jinhua Zhu and Yingce Xia and Shufang Xie and Tao Qin and Haiguang Liu and Tie-Yan Liu and Rui Yan},
