@@ -110,7 +110,7 @@ Install required packages for evaluation:
 
 ```shell
 conda install -c conda-forge rdkit
-pip install future scipy sklearn lifelines requests
+pip install future scipy scikit-learn lifelines requests
 ```
 
 Install the code from source:
