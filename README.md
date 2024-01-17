@@ -18,6 +18,8 @@ Authors: Qizhi Pei, Lijun Wu, Jinhua Zhu, Yingce Xia, Shufang Xie, Tao Qin, Haig
 This repository contains the code and data link for *Briefings in Bioinformatics 2023* paper [SSM-DTA: Breaking the Barriers of Data Scarcity in Drug-Target Affinity Prediction](https://academic.oup.com/bib/article/24/6/bbad386/7333673). Our model achieves significant results compared to traditional and recent baselines. We implement our method based on the codebase of [fairseq](https://github.com/pytorch/fairseq). If you have questions, don't hesitate to open an issue or ask me via <qizhipei@ruc.edu.cn> or Lijun Wu via <lijuwu@microsoft.com>. We are happy to hear from you!
 
 ## News
+**Jan 17 2024**: 🔥Update infer script and README for convenient usage~
+
 **Oct 6 2023**: Accepted by Briefings in Bioinformatics. Rename **SMT-DTA** to **SSM-DTA**.
 
 **Oct 22 2022**: Pre-trained data is released.
@@ -80,7 +82,8 @@ DATA_BIN
 * RDKit version == 2020.09.5
 * numpy
 
-We will set up the environment using conda. Clone the current repo and fairseq official repo, then merge them:
+Note that the above requirements is not strict.
+We set up the environment using conda. Clone the current repo and fairseq official repo, then merge them:
 
 ```shell
 git clone https://github.com/QizhiPei/SSM-DTA.git
@@ -109,8 +112,7 @@ conda activate py37-dta
 Install required packages for evaluation:
 
 ```shell
-conda install -c conda-forge rdkit
-pip install future scipy scikit-learn lifelines requests
+pip install future scipy scikit-learn lifelines requests rdkit==2020.09.5
 ```
 
 Install the code from source:
@@ -302,25 +304,8 @@ python $FAIRSEQ/train.py --task dti_mlm_regress_pretrain $DATA_BIN \
 You can also use fairseq argument `--tensorboard-logdir TENSORBOARD_LOGDIR`  to save logs for tensorboard.
 
 ## Evaluation/Inference
-
-```shell
-# Copy dict to DATA_BIN for evaluation
-cp preprocess/dict.mol.txt $DATA_BIN
-cp preprocess/dict.pro.txt $DATA_BIN
-
-python $FAIRSEQ/test.py \
-	--checkpoint yourCheckpointFilePath \
-	--data-bin $DATA_BIN \
-	--test-data yourTestSetDirPath \
-	--output-fn yourResultFilePath
-```
-
-* `DATA_BIN` is where you save the preprocessed data. We need to use the dictionary saved in this path.
-* `yourCheckpointFilePath` is the path to `.pt` file
-* `yourTestSetDirPath` is the path to your raw test data after tokenized (and canonicalized)
-* `yourResultFilePath` is where you want to save the model prediction and ground truth
-
-The upper evaluation code can only use `batch_size=1`. For quicker evaluation with larger customed batch size, you can use the following script:
+### Evaluation on Provided Binary Data
+For quicker evaluation with `.bin` data, you can use the following script:
 
 ```shell
 python fairseq_cli/validate.py \
@@ -331,6 +316,42 @@ python fairseq_cli/validate.py \
     --path yourCheckpointFilePath \
     $DATA_BIN/BindingDB_IC50(or BindingDB_Ki or DAVIS or KIBA)
 ```
+### Inference on your own Drug-Target Pairs
+If you want to use our model to predict the affinity value on your own DT pairs, following the instructions below:
+1. Download the checkpoint file provided in [the above section](https://github.com/QizhiPei/SSM-DTA?tab=readme-ov-file#ssm-dta-pre-trained-model-checkpoints), and save it to `yourCheckpointFilePath`.
+2. Preprocess your input molecule (drug) and protein (target) file. You can increase the number of worker to speed up the process (especially for large input files) as needed.
+   * For molecule (drug), you need to use rdkit to canonicalize the SMILES, and then use regular expression to tokenize it. 
+      ```shell
+        python preprocess/canonicalize.py example.mol --output-fn example.mol.can --workers 1
+        python preprocess/tokenize_re.py example.mol.can --output-fn example.mol.can.re --workers 1
+      ```
+   * For protein (target), you only need to add space between each amino acid.
+      ```shell
+      python preprocess/add_space.py example.pro --output-fn example.pro.addspace --workers 1
+      ```
+3. Run the following command, and the model prediction with be saved in `example_pred.txt`. We provide the example input file for reference.
+    ```shell
+    python infer.py \
+        --batch-size 8 \
+        --mode pred \
+        --checkpoint yourCheckpointFilePath \
+        --data-bin dict \
+        --input-mol-fn example.mol.can.re \
+        --input-pro-fn example.pro.addspace \
+        --output-fn example_pred.txt
+    ```
+4. If you want to calculate the metrics at the same time, you need to change `--mode pred` to `--mode eval`, and provide the `--input-label-fn`
+    ```shell
+    python infer.py \
+        --batch-size 8 \
+        --mode eval \
+        --checkpoint yourCheckpointFilePath \
+        --data-bin dict \
+        --input-mol-fn example.mol.can.re \
+        --input-pro-fn example.pro.addspace \
+        --input-label-fn example.label \
+        --output-fn example_pred.txt
+    ```
 
 ## Feature-based Training/Finetune
 

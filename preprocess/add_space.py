@@ -5,7 +5,7 @@ from tqdm import tqdm
 import multiprocessing
 
 def addspace(pro):
-    return pro.replace('',' ')
+    return ' '.join(list(pro))
 
 def main(args):
     input_fn = args.fn
